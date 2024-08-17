@@ -25,16 +25,7 @@ window.check_form = async function () {
     const fields = {
         SID: "學號",
         NAME: "姓名",
-        GENDER: "性別",
-        DIET: "飲食習慣",
-        ALLERGY: "過敏食物",
-        IDNumber: "身分證字號",
-        BIRTH: "生日",
-        phoneNumber: "電話",
-        // CLOTHINGSIZE: "衣服尺寸",
-        ICEName: "緊急聯絡人姓名",
-        ICERelationship: "與緊急聯絡人關係",
-        ICEPhoneNumber: "緊急聯絡人電話",
+        PLAN: "方案",
     };
 
     let emptyFields = [];
@@ -85,16 +76,7 @@ window.check_form = async function () {
     const student = new Stu({
         sid: form.SID.value,
         name: form.NAME.value,
-        gender: form.GENDER.value,
-        diet: form.DIET.value,
-        allergy: form.ALLERGY.value,
-        idnumber: form.IDNumber.value,
-        birth: form.BIRTH.value,
-        phoneNumber: form.phoneNumber.value,
-        // clothingSize: form.CLOTHINGSIZE.value,
-        emgName: form.ICEName.value,
-        emgRelation: form.ICERelationship.value,
-        emgPhoneNumber: form.ICEPhoneNumber.value,
+        plan: form.PLAN.value,
     });
     await student.confirmInfo();
 };
@@ -104,16 +86,7 @@ class Stu {
     constructor(studentData) {
         this.sid = studentData.sid;
         this.name = studentData.name;
-        this.gender = studentData.gender;
-        this.diet = studentData.diet;
-        this.allergy = studentData.allergy;
-        this.idnumber = studentData.idnumber;
-        this.birth = studentData.birth;
-        this.phoneNumber = studentData.phoneNumber;
-        // this.clothingSize = studentData.clothingSize;
-        this.emgName = studentData.emgName;
-        this.emgRelation = studentData.emgRelation;
-        this.emgPhoneNumber = studentData.emgPhoneNumber;
+        this.plan = studentData.plan;
     }
 
     async confirmInfo() {
@@ -122,24 +95,8 @@ class Stu {
                 this.sid +
                 "\n 姓名：" +
                 this.name +
-                "\n 性別：" +
-                GENDER2TXT[this.gender] +
-                "\n 葷素：" +
-                DIET2TXT[this.diet] +
-                "\n 身分證字號：" +
-                this.idnumber +
-                "\n 生日：" +
-                this.birth +
-                "\n 聯絡電話：" +
-                this.phoneNumber +
-                // "\n 衣服尺寸：" +
-                // this.clothingSize +
-                "\n 緊急聯絡人姓名：" +
-                this.emgName +
-                "\n 與學員之關係：" +
-                RELATION2TXT[this.emgRelation] +
-                "\n 緊急聯絡人電話：" +
-                this.emgPhoneNumber
+                "\n 系費方案：" +
+                this.plan
         );
         if (isConfirm) {
             await writeUserData(this);
@@ -191,17 +148,7 @@ async function writeUserData(stu) {
     const dt = new Date().toString();
     set(ref(db, `/students/${stu.sid}`), {
         NAME: stu.name,
-        GENDER: stu.gender,
-        DIET: stu.diet,
-        ALLERGY: stu.allergy,
-        IDNUMBER: stu.idnumber,
-        BIRTH: stu.birth,
-        PHONE: stu.phoneNumber,
-        // SIZE: stu.clothingSize,
-        EMGNAME: stu.emgName,
-        EMGPHONE: stu.emgPhoneNumber,
-        EMGRELATIONS: stu.emgRelation,
-        TIMESTAMP: dt,
+        PLAN: stu.plan,
     })
         .then(function () {
             console.log("Data written successfully");
