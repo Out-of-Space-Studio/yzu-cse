@@ -14,6 +14,14 @@ window.closeImage = function (event) {
     console.log("list closed");
 };
 
+const PLAN2TXT = {
+    "A-0": "方案A",
+    "A-1": "方案A + ɑ組合包",
+    "A-2": "方案A + β組合包",
+    "A-3": "方案A + ɑ組合包 + β組合包",
+    B: "方案B",
+};
+
 window.todo = async function () {
     check_form();
 };
@@ -81,7 +89,7 @@ class Stu {
                 "\n 姓名：" +
                 this.name +
                 "\n 系費方案：" +
-                this.plan
+                PLAN2TXT[this.plan]
         );
         if (isConfirm) {
             await writeUserData(this);
