@@ -58,21 +58,6 @@ window.check_form = async function () {
         return;
     }
 
-    if (!verifyId(form.IDNumber.value)) {
-        alert(`身份證字號錯誤!`);
-        setTimeout(() => {
-            IDNumber.style.borderColor = "red";
-            IDNumber.scrollIntoView({
-                behavior: "smooth",
-                block: "center",
-            });
-            IDNumber.focus();
-        }, 0);
-        return;
-    } else {
-        IDNumber.style.borderColor = "";
-    }
-
     const student = new Stu({
         sid: form.SID.value,
         name: form.NAME.value,
@@ -160,36 +145,4 @@ async function writeUserData(stu) {
             console.error("Error writing data: ", error);
             alert("伺服器發生錯誤，請稍後再試\n錯誤訊息: " + error.message);
         });
-}
-
-// ID Verfication
-function verifyId(id) {
-    id = id.trim();
-    const verification = id.match("^[A-Z][12]\\d{8}$");
-    if (!verification) {
-        return false;
-    }
-
-    let conver = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
-    let weights = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
-
-    id = String(conver.indexOf(id[0]) + 10) + id.slice(1);
-
-    let checkSum = 0;
-    for (let i = 0; i < id.length; i++) {
-        const c = parseInt(id[i]);
-        const w = weights[i];
-        checkSum += c * w;
-    }
-
-    return checkSum % 10 == 0;
-}
-
-// close iframe
-function closeIframe() {
-    const tag = top.document.getElementById("sign-up");
-    if (tag) {
-        tag.style.display = "none";
-        console.log("iframe closed");
-    }
 }
