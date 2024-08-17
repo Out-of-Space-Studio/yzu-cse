@@ -138,7 +138,7 @@ async function writeUserData(stu) {
         .then(function () {
             console.log("Data written successfully");
             alert("報名成功");
-            window.location.href = "../index.html";
+            window.location.href = "./index.html";
         })
         .catch(function (error) {
             console.error("Error writing data: ", error);
