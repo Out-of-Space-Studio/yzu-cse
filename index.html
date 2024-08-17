@@ -99,11 +99,8 @@
         <div class="container" id="container">
             <div class="body">
                 <p class="title">系費登記</p>
-
+                <br />
                 <form method="post" class="form" id="FORM">
-                    <label for="personal" class="s-title c-title"
-                        >個人資料</label
-                    >
                     <div class="personal classification">
                         <div class="column">
                             <p class="s-title">學號(不須加s)</p>
@@ -111,7 +108,7 @@
                                 type="text"
                                 class="inp"
                                 id="SID"
-                                pattern="113\d{4}|112\d{4}"
+                                pattern="113\d{4}|112\d{4}|111\d{4}|110\d{4}|109\d{4}|"
                                 placeholder="1130123"
                                 required
                             />
@@ -132,60 +129,26 @@
                                 required
                             />
                         </div>
+
                         <div class="column">
-                            <p class="s-title">身分證字號</p>
-                            <input
-                                type="text"
-                                class="inp"
-                                id="IDNumber"
-                                pattern="[a-zA-Z]1\d{8}|[a-zA-Z]2\d{8}"
-                                placeholder="A123456789"
-                                required
-                            />
-                        </div>
-                        <div class="column">
-                            <p class="s-title">生日(西元)</p>
-                            <input
-                                type="date"
-                                class="inp"
-                                id="BIRTH"
-                                pattern=""
-                                placeholder="YYYYMMDD"
-                                required
-                            />
-                        </div>
-                        <div class="column">
-                            <p class="s-title">電話</p>
-                            <input
-                                type="text"
-                                class="inp"
-                                id="phoneNumber"
-                                pattern="09\d{8}"
-                                placeholder="0912345678"
-                                required
-                            />
-                        </div>
-                        <div class="column" style="display: none">
-                            <p class="s-title">衣服尺寸</p>
+                            <p class="s-title">系費選擇</p>
                             <select
                                 name="selection-box"
                                 class="inp"
                                 id="CLOTHINGSIZE"
                             >
                                 <option value="" disabled selected>
-                                    請選擇衣服尺寸
+                                    請選擇系費方案
                                 </option>
-                                <option value="2XL">2XL</option>
-                                <option value="XL">XL</option>
-                                <option value="L">L</option>
-                                <option value="M">M</option>
-                                <option value="S">S</option>
-                                <option value="XS">XS</option>
+                                <option value="A-0">方案A</option>
+                                <option value="A-1">方案A + ɑ組合包</option>
+                                <option value="A-2">方案A + β組合包</option>
+                                <option value="B">方案B</option>
                             </select>
                             <span
                                 class="comment"
                                 onclick="showImage('../images/clothing-size.png')"
-                                >點此參考尺寸表</span
+                                >點此參考系費方案</span
                             >
 
                             <div
@@ -209,7 +172,7 @@
                             type="submit"
                             class="submit g-recaptcha"
                             id="SUBMIT"
-                            data-sitekey="6LcUXgcqAAAAANUEME6erIMev4sWICtHskv78kWA"
+                            data-sitekey="6LeB6ygqAAAAANYj4WhDvaufI9htgm67wx8fW6VS"
                             data-action="verify1"
                             data-callback="todo"
                         />
@@ -218,7 +181,7 @@
             </div>
         </div>
         <!-- 頁尾 -->
-        <div class="footer" id="footer">
+        <div class="footer" id="footer" style="display: none">
             <div class="row-container">
                 <div class="row">
                     <p class="event-title">腦資急轉彎</p>

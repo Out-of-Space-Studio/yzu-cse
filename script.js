@@ -1,26 +1,9 @@
-// close footer and header if iframe
-document.addEventListener("DOMContentLoaded", function () {
-    const isEmbedded = top.document.body.dataset.root == "true";
-    console.log(isEmbedded);
-
-    // const tag = window.parent.document.getElementById("sign-up");
-    if (isEmbedded) {
-        const header = document.getElementById("header");
-        const footer = document.getElementById("footer");
-        const body = document.body;
-        // const body = document.getElementById("container");
-
-        if (header) header.style.display = "none";
-        if (footer) footer.style.display = "none";
-        body.style.backgroundColor = "#F5F5F5";
-    }
-});
 window.showImage = function (src) {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
     modal.style.display = "block";
     modalImg.src = src;
-    console.log("Clothing size list showed");
+    console.log("list showed");
 };
 
 window.closeImage = function (event) {
@@ -28,35 +11,11 @@ window.closeImage = function (event) {
     if (event.target === modal || event.target.className === "close") {
         modal.style.display = "none";
     }
-    console.log("Clothing size list closed");
-};
-
-const GENDER2TXT = {
-    BOY: "男",
-    GIRL: "女",
-    NONBIN: "非二元性別",
-};
-
-const DIET2TXT = {
-    NORMAL: "葷",
-    VEGAN: "全素",
-    VEGETARIAN: "蛋奶素",
-    "OVO-VEGAN": "蛋素",
-    "LACTO-VEGAN": "奶素",
-    "NO-MEAT": "五辛素",
-};
-
-const RELATION2TXT = {
-    FATHER: "父",
-    MOTHER: "母",
-    GRANDFATHER: "爺爺/外公",
-    GRANDMOTHER: "奶奶/外婆",
-    OTHERS: "其他",
+    console.log("list closed");
 };
 
 window.todo = async function () {
     check_form();
-    // closeIframe();
 };
 
 // datas to set
@@ -205,21 +164,21 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCPh9Hg4qFMyrP_7nchVGTvM-qQKSUa6JE",
-    authDomain: "ic-im-in-cse-2024-48f2b.firebaseapp.com",
+    apiKey: "AIzaSyD6pq3yYHT1L0wmTDDKk--tiaWXLRzxCI0",
+    authDomain: "yzu-cse-2024-1bd46.firebaseapp.com",
     databaseURL:
-        "https://ic-im-in-cse-2024-48f2b-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "ic-im-in-cse-2024-48f2b",
-    storageBucket: "ic-im-in-cse-2024-48f2b.appspot.com",
-    messagingSenderId: "259899984268",
-    appId: "1:259899984268:web:888b208395c19ffdd3aea9",
+        "https://yzu-cse-2024-1bd46-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "yzu-cse-2024-1bd46",
+    storageBucket: "yzu-cse-2024-1bd46.appspot.com",
+    messagingSenderId: "96110561831",
+    appId: "1:96110561831:web:bc97bff8fa40705f321c02",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const appCheck = initializeAppCheck(app, {
     provider: new ReCaptchaV3Provider(
-        "6LcUXgcqAAAAANUEME6erIMev4sWICtHskv78kWA"
+        "6LeB6ygqAAAAANYj4WhDvaufI9htgm67wx8fW6VS"
     ),
 
     // Optional argument. If true, the SDK automatically refreshes App Check
