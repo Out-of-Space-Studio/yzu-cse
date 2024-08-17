@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "DELA";
+    src: URL("../../DelaGothicOne-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "IANSUI";
+    src: URL("../../Iansui-Regular.ttf") format("truetype");
+}
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+body {
+    font-family: "IANSUI";
+    line-height: 1.6;
+    height: 100%;
+}
+
+table {
+    font-family: "IANSUI";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 1rem;
+}
+
+a,
+button,
+input,
+select {
+    transition: all 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.title {
+    font-size: 2.5rem;
+}
+
+.s-title {
+    font-size: 1.8rem;
+}
+
+@media screen and (max-width: 72em) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .s-title {
+        font-size: 1.5rem;
+    }
+}

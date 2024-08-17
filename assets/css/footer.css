@@ -1,0 +1,129 @@
+.footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 3rem 1rem;
+}
+.footer .s-title {
+    text-align: center;
+    color: #bdc3c7;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer .event-title {
+    color: #3498db;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: bold;
+    background-color: transparent;
+    box-shadow: 0 0 0 0;
+    max-height: 3rem;
+}
+
+.footer a {
+    color: #ecf0f1;
+    transition: color 0.3s ease;
+    padding: 10px;
+    background-color: rgba(49, 49, 49, 0);
+}
+.footer a:hover {
+    color: #3498db;
+}
+
+.row-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 70%;
+    margin: 25px auto;
+    flex-wrap: wrap;
+}
+
+.row {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 15px 0px 15px 0px;
+    max-width: 30%;
+    align-items: center;
+    padding: calc(0.3 * var(--m)) calc(0.8 * var(--m));
+}
+.row .s-title {
+    margin: 0px 0px 25px 0px;
+}
+
+.link {
+    width: calc(0.8 * var(--m));
+    height: calc(0.8 * var(--m));
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: calc(0.1 * var(--m));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.relative {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    color: #fff;
+}
+
+.license {
+    margin: 25px auto;
+    float: right;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #bdc3c7;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 72em) {
+    .row-container {
+        flex-direction: column;
+        align-items: center;
+        max-width: 70%;
+    }
+
+    .row {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+        padding: calc(0.2 * var(--m)) calc(0.4 * var(--m));
+    }
+
+    .license {
+        text-align: center;
+        float: none;
+        margin: 15px 0;
+    }
+    .footer a {
+        padding: 5px;
+    }
+}
+
+/* BTT BTN  */
+
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: block;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+#back-to-top:hover {
+    opacity: 0.8;
+}
+
+/* BTT BTN  */

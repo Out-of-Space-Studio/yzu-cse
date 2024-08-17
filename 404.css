@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111111;
+    font-family: monospace;
+    color: #b000ff;
+}
+
+.wrapper {
+    height: 100vh;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.effect-wrapper {
+    text-align: center;
+    font-weight: normal;
+}
+
+#typed {
+    font-weight: bold;
+    color: #3fff2d;
+}
+
+.cursor {
+    display: inline-block;
+    background-color: #b0ff95;
+    animation: blinker 800ms infinite;
+}
+
+.cursor.typing-true {
+    animation: none;
+}
+
+@keyframes blinker {
+    0% {
+        background-color: #3fff2d;
+    }
+    50% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: #3fff2d;
+    }
+}
