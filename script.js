@@ -88,7 +88,7 @@ class Stu {
         this.sid = studentData.sid;
         this.name = studentData.name;
         this.plan = studentData.plan;
-        this.pay = null;
+        this.pay = false;
     }
 
     async confirmInfo() {
