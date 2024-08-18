@@ -88,6 +88,7 @@ class Stu {
         this.sid = studentData.sid;
         this.name = studentData.name;
         this.plan = studentData.plan;
+        this.pay = null;
     }
 
     async confirmInfo() {
@@ -150,6 +151,7 @@ async function writeUserData(stu) {
     set(ref(db, `/students/${stu.sid}`), {
         NAME: stu.name,
         PLAN: stu.plan,
+        PAY: stu.pay,
     })
         .then(function () {
             console.log("Data written successfully");
