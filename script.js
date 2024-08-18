@@ -22,6 +22,14 @@ const PLAN2TXT = {
     B: "方案B",
 };
 
+const COST2TXT = {
+    "A-0": 500,
+    "A-1": 1800,
+    "A-2": 1800,
+    "A-3": 3100,
+    B: 3000,
+};
+
 window.todo = async function () {
     check_form();
 };
@@ -145,7 +153,7 @@ async function writeUserData(stu) {
     })
         .then(function () {
             console.log("Data written successfully");
-            alert("報名成功");
+            alert("您所要繳納的費用為：" + COST2TXT[stu.plan]);
             window.location.href = "./payments/index.html";
         })
         .catch(function (error) {
