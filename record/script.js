@@ -22,32 +22,29 @@ window.check_form = async function () {
     let emptyFields = [];
     let firstEmptyField = null;
 
-    // Check radio buttons
-    const radioGroups = ["isStudy", "isMail"];
-    for (let group of radioGroups) {
-        const checkedRadio = form.querySelector(
-            `input[name="${group}"]:checked`
-        );
-        if (!checkedRadio) {
-            emptyFields.push(fields[group]);
-            const radioLabels = form.querySelectorAll(
-                `input[name="${group}"] + label`
-            );
-            radioLabels.forEach((label) => (label.style.color = "red"));
-        } else {
-            const radioLabels = form.querySelectorAll(
-                `input[name="${group}"] + label`
-            );
-            radioLabels.forEach((label) => (label.style.color = ""));
-        }
-    }
-
-    // Check checkboxes and other fields
+    // Check all fields including radio buttons
     for (let [id, label] of Object.entries(fields)) {
         const field = form[id];
         if (field) {
             if (field.type === "radio") {
-                continue;
+                const checkedRadio = form.querySelector(
+                    `input[name="${id}"]:checked`
+                );
+                if (!checkedRadio) {
+                    emptyFields.push(label);
+                    const radioLabels = form.querySelectorAll(
+                        `input[name="${id}"] + label`
+                    );
+                    radioLabels.forEach((label) => (label.style.color = "red"));
+                    if (!firstEmptyField) {
+                        firstEmptyField = field;
+                    }
+                } else {
+                    const radioLabels = form.querySelectorAll(
+                        `input[name="${id}"] + label`
+                    );
+                    radioLabels.forEach((label) => (label.style.color = ""));
+                }
             } else if (field.type === "checkbox") {
                 if (!field.checked) {
                     emptyFields.push(label);
