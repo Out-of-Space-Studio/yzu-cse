@@ -22,10 +22,25 @@ window.check_form = async function () {
     let emptyFields = [];
     let firstEmptyField = null;
 
+    // Check radio buttons
+    const radioGroups = ["isStudy", "isMail"];
+    for (let group of radioGroups) {
+        if (!form.querySelector(`input[name="${group}"]:checked`)) {
+            emptyFields.push(fields[group]);
+        }
+    }
+
+    // Check checkboxes and other fields
     for (let [id, label] of Object.entries(fields)) {
         const field = form[id];
         if (field) {
-            if (!field.value) {
+            if (field.type === "checkbox" && !field.checked) {
+                emptyFields.push(label);
+                field.parentElement.style.borderColor = "red";
+                if (!firstEmptyField) {
+                    firstEmptyField = field;
+                }
+            } else if (field.type !== "checkbox" && !field.value) {
                 emptyFields.push(label);
                 field.style.borderColor = "red";
                 if (!firstEmptyField) {
@@ -34,6 +49,9 @@ window.check_form = async function () {
             } else {
                 if (field.style) {
                     field.style.borderColor = "";
+                }
+                if (field.parentElement.style) {
+                    field.parentElement.style.borderColor = "";
                 }
             }
         } else {
@@ -55,6 +73,7 @@ window.check_form = async function () {
         return;
     }
 
+    // If all checks pass, create the Stu object and proceed
     const student = new Stu({
         sid: form.SID.value,
         isStudy: form.STUDY_YES.checked,
@@ -146,7 +165,6 @@ async function writeUserData(stu) {
     const db = getDatabase();
     const dt = new Date().toString();
     set(ref(db, `/checked/${stu.sid}`), {
-        SID: stu.sid,
         isStudy: stu.isStudy,
         isMail: stu.isMail,
         PARTY: stu.party,
