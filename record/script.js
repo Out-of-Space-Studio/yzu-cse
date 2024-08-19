@@ -3,7 +3,7 @@ window.todo = async function () {
 };
 
 // datas to set
-window.check_form = async function () {
+wwindow.check_form = async function () {
     const form = document.getElementById("FORM");
 
     const fields = {
@@ -30,25 +30,22 @@ window.check_form = async function () {
                 const checkedRadio = form.querySelector(
                     `input[name="${id}"]:checked`
                 );
+                const radioLabels = form.querySelectorAll(
+                    `input[name="${id}"] + label`
+                );
                 if (!checkedRadio) {
                     emptyFields.push(label);
-                    const radioLabels = form.querySelectorAll(
-                        `input[name="${id}"] + label`
-                    );
                     radioLabels.forEach((label) => (label.style.color = "red"));
                     if (!firstEmptyField) {
                         firstEmptyField = field;
                     }
                 } else {
-                    const radioLabels = form.querySelectorAll(
-                        `input[name="${id}"] + label`
-                    );
                     radioLabels.forEach((label) => (label.style.color = ""));
                 }
             } else if (field.type === "checkbox") {
+                const checkboxLabel = field.nextElementSibling;
                 if (!field.checked) {
                     emptyFields.push(label);
-                    const checkboxLabel = field.nextElementSibling;
                     if (checkboxLabel && checkboxLabel.tagName === "LABEL") {
                         checkboxLabel.style.color = "red";
                     }
@@ -56,7 +53,6 @@ window.check_form = async function () {
                         firstEmptyField = field;
                     }
                 } else {
-                    const checkboxLabel = field.nextElementSibling;
                     if (checkboxLabel && checkboxLabel.tagName === "LABEL") {
                         checkboxLabel.style.color = "";
                     }
