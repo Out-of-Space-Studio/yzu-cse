@@ -25,8 +25,20 @@ window.check_form = async function () {
     // Check radio buttons
     const radioGroups = ["isStudy", "isMail"];
     for (let group of radioGroups) {
-        if (!form.querySelector(`input[name="${group}"]:checked`)) {
+        const checkedRadio = form.querySelector(
+            `input[name="${group}"]:checked`
+        );
+        if (!checkedRadio) {
             emptyFields.push(fields[group]);
+            const radioLabels = form.querySelectorAll(
+                `input[name="${group}"] + label`
+            );
+            radioLabels.forEach((label) => (label.style.color = "red"));
+        } else {
+            const radioLabels = form.querySelectorAll(
+                `input[name="${group}"] + label`
+            );
+            radioLabels.forEach((label) => (label.style.color = ""));
         }
     }
 
@@ -34,15 +46,23 @@ window.check_form = async function () {
     for (let [id, label] of Object.entries(fields)) {
         const field = form[id];
         if (field) {
-            if (field.type === "checkbox" && !field.checked) {
-                emptyFields.push(label);
-                if (field.parentElement && field.parentElement.style) {
-                    field.parentElement.style.borderColor = "red";
+            if (field.type === "checkbox") {
+                if (!field.checked) {
+                    emptyFields.push(label);
+                    const checkboxLabel = field.nextElementSibling;
+                    if (checkboxLabel && checkboxLabel.tagName === "LABEL") {
+                        checkboxLabel.style.color = "red";
+                    }
+                    if (!firstEmptyField) {
+                        firstEmptyField = field;
+                    }
+                } else {
+                    const checkboxLabel = field.nextElementSibling;
+                    if (checkboxLabel && checkboxLabel.tagName === "LABEL") {
+                        checkboxLabel.style.color = "";
+                    }
                 }
-                if (!firstEmptyField) {
-                    firstEmptyField = field;
-                }
-            } else if (field.type !== "checkbox" && !field.value) {
+            } else if (!field.value) {
                 emptyFields.push(label);
                 if (field.style) {
                     field.style.color = "red";
@@ -53,9 +73,6 @@ window.check_form = async function () {
             } else {
                 if (field.style) {
                     field.style.color = "";
-                }
-                if (field.parentElement && field.parentElement.style) {
-                    field.parentElement.style.borderColor = "";
                 }
             }
         } else {
@@ -109,19 +126,6 @@ class Stu {
     }
 
     async confirmInfo() {
-        // const isConfirm = window.confirm(
-        //     "請確認以下資訊是否正確\n 學號：" +
-        //         this.sid +
-        //         "\n 姓名：" +
-        //         this.name +
-        //         "\n 系費方案：" +
-        //         PLAN2TXT[this.plan]
-        // );
-        // if (isConfirm) {
-        //     await writeUserData(this);
-        // } else {
-        //     alert("你已取消送出報名表單!");
-        // }
         await writeUserData(this);
     }
 }
