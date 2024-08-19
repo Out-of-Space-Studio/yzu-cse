@@ -3,7 +3,7 @@ window.todo = async function () {
 };
 
 // datas to set
-wwindow.check_form = async function () {
+window.check_form = async function () {
     const form = document.getElementById("FORM");
 
     const fields = {
