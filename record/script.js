@@ -8,8 +8,8 @@ window.check_form = async function () {
 
     const fields = {
         SID: "學號",
-        isStudy: "就讀",
-        isMail: "新生包",
+        isStudy: "就讀?",
+        isMail: "新生包?",
         PARTY: "新生茶會",
         TRAIN: "新生訓練",
         BASKETBALL: "系籃",
