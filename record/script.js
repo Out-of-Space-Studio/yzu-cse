@@ -8,6 +8,8 @@ window.check_form = async function () {
 
     const fields = {
         SID: "學號",
+        isStudy: "就讀",
+        isMail: "新生包",
         PARTY: "新生茶會",
         TRAIN: "新生訓練",
         BASKETBALL: "系籃",
@@ -44,7 +46,9 @@ window.check_form = async function () {
     for (let [id, label] of Object.entries(fields)) {
         const field = form[id];
         if (field) {
-            if (field.type === "checkbox") {
+            if (field.type === "radio") {
+                continue;
+            } else if (field.type === "checkbox") {
                 if (!field.checked) {
                     emptyFields.push(label);
                     const checkboxLabel = field.nextElementSibling;
