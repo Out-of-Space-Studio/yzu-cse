@@ -73,16 +73,16 @@ window.check_form = async function () {
 // db stuff
 class Stu {
     constructor(studentData) {
-        this.sid = studentData.sid;
-        this.isStudy = studentData.isStudy;
-        this.isMail = studentData.isMail;
-        this.party = studentData.party;
-        this.train = studentData.train;
-        this.basketball = studentData.basketball;
-        this.volleyball = studentData.volleyball;
-        this.badminton = studentData.badminton;
-        this.line = studentData.line;
-        this.instagram = studentData.instagram;
+        this.sid = studentData.sid || "";
+        this.isStudy = studentData.study_yes || false;
+        this.isMail = studentData.mail_yes || false;
+        this.party = studentData.party || false;
+        this.train = studentData.train || false;
+        this.basketball = studentData.basketball || false;
+        this.volleyball = studentData.volleyball || false;
+        this.badminton = studentData.badminton || false;
+        this.line = studentData.line || false;
+        this.instagram = studentData.instagram || false;
     }
 
     async confirmInfo() {
