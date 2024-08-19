@@ -74,8 +74,8 @@ window.check_form = async function () {
 class Stu {
     constructor(studentData) {
         this.sid = studentData.sid || "";
-        this.isStudy = studentData.study_yes || false;
-        this.isMail = studentData.mail_yes || false;
+        this.isStudy = studentData.isStudy || false;
+        this.isMail = studentData.isMail || false;
         this.party = studentData.party || false;
         this.train = studentData.train || false;
         this.basketball = studentData.basketball || false;
