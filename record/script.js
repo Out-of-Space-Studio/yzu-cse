@@ -45,14 +45,14 @@ window.check_form = async function () {
             } else if (field.type !== "checkbox" && !field.value) {
                 emptyFields.push(label);
                 if (field.style) {
-                    field.style.borderColor = "red";
+                    field.style.color = "red";
                 }
                 if (!firstEmptyField) {
                     firstEmptyField = field;
                 }
             } else {
                 if (field.style) {
-                    field.style.borderColor = "";
+                    field.style.color = "";
                 }
                 if (field.parentElement && field.parentElement.style) {
                     field.parentElement.style.borderColor = "";
@@ -78,10 +78,8 @@ window.check_form = async function () {
     // If all checks pass, create the Stu object and proceed
     const student = new Stu({
         sid: form.SID.value,
-        isStudy:
-            form.querySelector('input[name="isStudy"]:checked').value === "yes",
-        isMail:
-            form.querySelector('input[name="isMail"]:checked').value === "yes",
+        isStudy: form.STUDY_YES.checked,
+        isMail: form.MAIL_YES.checked,
         party: form.PARTY.checked,
         train: form.TRAIN.checked,
         basketball: form.BASKETBALL.checked,
