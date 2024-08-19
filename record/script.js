@@ -1,19 +1,3 @@
-const PLAN2TXT = {
-    "A-0": "方案A",
-    "A-1": "方案A + ɑ組合包",
-    "A-2": "方案A + β組合包",
-    "A-3": "方案A + ɑ組合包 + β組合包",
-    B: "方案B",
-};
-
-const COST2TXT = {
-    "A-0": 500,
-    "A-1": 1800,
-    "A-2": 1800,
-    "A-3": 3100,
-    B: 3000,
-};
-
 window.todo = async function () {
     check_form();
 };
@@ -67,15 +51,15 @@ window.check_form = async function () {
 
     const student = new Stu({
         sid: form.SID.value,
-        isStudy: form.STUDY_YES.value,
-        isMail: form.MAIL_YES.value,
-        party: form.PARTY.value,
-        train: form.TRAIN.value,
-        basketball: form.BASKETBALL.value,
-        volleyball: form.VOLLEYBALL.value,
-        badminton: form.BADMINTON.value,
-        line: form.LINE.value,
-        instagram: form.INSTAGRAM.value,
+        isStudy: form.STUDY_YES.checked,
+        isMail: form.MAIL_YES.checked,
+        party: form.PARTY.checked,
+        train: form.TRAIN.checked,
+        basketball: form.BASKETBALL.checked,
+        volleyball: form.VOLLEYBALL.checked,
+        badminton: form.BADMINTON.checked,
+        line: form.LINE.checked,
+        instagram: form.INSTAGRAM.checked,
     });
     await student.confirmInfo();
 };
