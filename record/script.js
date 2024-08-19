@@ -32,7 +32,9 @@ window.check_form = async function () {
                     firstEmptyField = field;
                 }
             } else {
-                field.style.borderColor = "";
+                if (field.style) {
+                    field.style.borderColor = "";
+                }
             }
         } else {
             console.warn(`Field with id "${id}" not found in the form.`);
