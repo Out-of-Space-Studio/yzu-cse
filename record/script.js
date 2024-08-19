@@ -36,13 +36,17 @@ window.check_form = async function () {
         if (field) {
             if (field.type === "checkbox" && !field.checked) {
                 emptyFields.push(label);
-                field.parentElement.style.borderColor = "red";
+                if (field.parentElement && field.parentElement.style) {
+                    field.parentElement.style.borderColor = "red";
+                }
                 if (!firstEmptyField) {
                     firstEmptyField = field;
                 }
             } else if (field.type !== "checkbox" && !field.value) {
                 emptyFields.push(label);
-                field.style.borderColor = "red";
+                if (field.style) {
+                    field.style.borderColor = "red";
+                }
                 if (!firstEmptyField) {
                     firstEmptyField = field;
                 }
@@ -50,7 +54,7 @@ window.check_form = async function () {
                 if (field.style) {
                     field.style.borderColor = "";
                 }
-                if (field.parentElement.style) {
+                if (field.parentElement && field.parentElement.style) {
                     field.parentElement.style.borderColor = "";
                 }
             }
@@ -61,23 +65,23 @@ window.check_form = async function () {
 
     if (emptyFields.length > 0) {
         alert(`還有這些沒問到：\n${emptyFields.join("\n")}`);
-        setTimeout(() => {
-            if (firstEmptyField) {
-                firstEmptyField.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                });
-                firstEmptyField.focus();
-            }
-        }, 0);
+        if (firstEmptyField) {
+            firstEmptyField.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+            });
+            firstEmptyField.focus();
+        }
         return;
     }
 
     // If all checks pass, create the Stu object and proceed
     const student = new Stu({
         sid: form.SID.value,
-        isStudy: form.STUDY_YES.checked,
-        isMail: form.MAIL_YES.checked,
+        isStudy:
+            form.querySelector('input[name="isStudy"]:checked').value === "yes",
+        isMail:
+            form.querySelector('input[name="isMail"]:checked').value === "yes",
         party: form.PARTY.checked,
         train: form.TRAIN.checked,
         basketball: form.BASKETBALL.checked,
