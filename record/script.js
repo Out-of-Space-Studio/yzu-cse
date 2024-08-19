@@ -24,14 +24,18 @@ window.check_form = async function () {
 
     for (let [id, label] of Object.entries(fields)) {
         const field = form[id];
-        if (!field.value) {
-            emptyFields.push(label);
-            field.style.borderColor = "red";
-            if (!firstEmptyField) {
-                firstEmptyField = field;
+        if (field) {
+            if (!field.value) {
+                emptyFields.push(label);
+                field.style.borderColor = "red";
+                if (!firstEmptyField) {
+                    firstEmptyField = field;
+                }
+            } else {
+                field.style.borderColor = "";
             }
         } else {
-            field.style.borderColor = "";
+            console.warn(`Field with id "${id}" not found in the form.`);
         }
     }
 
