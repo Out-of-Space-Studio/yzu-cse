@@ -100,6 +100,7 @@ window.check_form = async function () {
         line: form.LINE.checked,
         instagram: form.INSTAGRAM.checked,
         question: form.QUESTION.value,
+        coomment: form.COMMENT.value,
     });
     await student.confirmInfo();
 };
@@ -118,6 +119,7 @@ class Stu {
         this.line = studentData.line || false;
         this.instagram = studentData.instagram || false;
         this.question = studentData.question || "";
+        this.comment = studentData.comment || "";
     }
 
     async confirmInfo() {
@@ -176,6 +178,7 @@ async function writeUserData(stu) {
         LINE: stu.line,
         INSTAGRAM: stu.instagram,
         QUESTION: stu.question,
+        COMMENT: stu.comment,
     })
         .then(function () {
             console.log("Data written successfully");
