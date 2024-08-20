@@ -173,7 +173,13 @@ async function writeUserData(stu) {
         .then(function () {
             console.log("Data written successfully");
             alert("您所要繳納的費用為：" + COST2TXT[stu.plan]);
-            window.location.href = "./payments/index.html";
+            const isEmbedded = top.document.body.dataset.root == "true";
+            if (isEmbedded) {
+                const section = document.getElementById("dept-fees");
+                section.src = "https://yzu-cse-2024.pages.dev/payments/";
+            } else {
+                window.location.href = "../payments/index.html";
+            }
         })
         .catch(function (error) {
             console.error("Error writing data: ", error);
