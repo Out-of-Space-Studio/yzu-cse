@@ -106,6 +106,9 @@ class Stu {
         this.name = studentData.name;
         this.plan = studentData.plan;
         this.pay = false;
+        if (this.sid[0].toLowerCase() === "s") {
+            this.sid = this.sid.slice(1);
+        }
     }
 
     async confirmInfo() {
