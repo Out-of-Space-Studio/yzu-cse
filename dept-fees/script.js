@@ -47,6 +47,11 @@ const COST2TXT = {
     B: 3000,
 };
 
+const PAYMENT2TXT = {
+    ATM: "轉帳",
+    OFFICE: "至系辦繳納",
+};
+
 window.todo = async function () {
     check_form();
 };
@@ -59,6 +64,7 @@ window.check_form = async function () {
         SID: "學號",
         NAME: "姓名",
         PLAN: "方案",
+        PAYMENT: "繳納方式",
     };
 
     let emptyFields = [];
@@ -95,6 +101,7 @@ window.check_form = async function () {
         sid: form.SID.value,
         name: form.NAME.value,
         plan: form.PLAN.value,
+        payment: form.PAYMENT.value,
     });
     await student.confirmInfo();
 };
@@ -105,6 +112,7 @@ class Stu {
         this.sid = studentData.sid;
         this.name = studentData.name;
         this.plan = studentData.plan;
+        this.payment = studentData.payment;
         this.pay = false;
         if (this.sid[0].toLowerCase() === "s") {
             this.sid = this.sid.slice(1);
@@ -118,7 +126,9 @@ class Stu {
                 "\n 姓名：" +
                 this.name +
                 "\n 系費方案：" +
-                PLAN2TXT[this.plan]
+                PLAN2TXT[this.plan] +
+                "\n 繳納方式：" +
+                PAYMENT2TXT[this.payment]
         );
         if (isConfirm) {
             await writeUserData(this);
@@ -171,6 +181,7 @@ async function writeUserData(stu) {
     set(ref(db, `/students/${stu.sid}`), {
         NAME: stu.name,
         PLAN: stu.plan,
+        PAYMENT: stu.payment,
         PAY: stu.pay,
     })
         .then(function () {
