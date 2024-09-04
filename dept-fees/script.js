@@ -178,7 +178,11 @@ async function writeUserData(stu) {
     })
         .then(function () {
             console.log("Data written successfully");
-            alert("您所要繳納的費用為：" + COST2TXT[stu.plan]);
+            alert(
+                "您所要繳納的費用為：" +
+                    COST2TXT[stu.plan] +
+                    "\n請至系辦(R1303B)繳納"
+            );
             const isEmbedded = top.document.body.dataset.root == "true";
             if (isEmbedded) {
                 const section = document.getElementById("dept-fees");
